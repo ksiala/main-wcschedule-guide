@@ -1,0 +1,313 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>杂志专题 · 世界杯赛程</title>
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+            background: linear-gradient(145deg, #fce5d4 0%, #f7d8be 35%, #eec9a6 70%, #f3cfb0 100%);
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            padding: 2rem 1.5rem;
+            line-height: 1.6;
+            color: #2f241b;
+        }
+
+        .magazine-wrapper {
+            max-width: 860px;
+            width: 100%;
+            background: rgba(255, 248, 240, 0.82);
+            backdrop-filter: blur(6px);
+            border-radius: 48px 48px 32px 32px;
+            box-shadow: 0 20px 40px -12px rgba(140, 80, 40, 0.25), 0 8px 20px rgba(0,0,0,0.04);
+            padding: 2.5rem 2.2rem 3.5rem;
+            transition: all 0.2s ease;
+        }
+
+        /* hero */
+        .hero-section {
+            background: linear-gradient(135deg, #c46f3a 0%, #b25d30 100%);
+            margin: -2.5rem -2.2rem 2.8rem;
+            padding: 2.8rem 2.5rem 2.2rem;
+            border-radius: 48px 48px 80px 80px;
+            color: #fef5ea;
+            text-align: center;
+            box-shadow: 0 12px 24px -8px rgba(110, 55, 25, 0.3);
+            position: relative;
+        }
+
+        .hero-section::after {
+            content: '';
+            position: absolute;
+            bottom: -16px;
+            left: 10%;
+            width: 80%;
+            height: 18px;
+            background: rgba(200, 130, 80, 0.18);
+            border-radius: 50%;
+            filter: blur(10px);
+        }
+
+        .hero-eyebrow {
+            font-size: 0.75rem;
+            letter-spacing: 4px;
+            text-transform: uppercase;
+            opacity: 0.7;
+            margin-bottom: 0.8rem;
+            font-weight: 400;
+        }
+
+        .hero-title {
+            font-size: 2.8rem;
+            font-weight: 550;
+            letter-spacing: -0.01em;
+            line-height: 1.2;
+            text-shadow: 0 2px 6px rgba(0,0,0,0.08);
+            margin-bottom: 0.6rem;
+        }
+
+        .hero-sub {
+            font-size: 1.1rem;
+            opacity: 0.9;
+            max-width: 480px;
+            margin: 0 auto;
+            font-weight: 350;
+            border-top: 1px solid rgba(255, 235, 210, 0.3);
+            padding-top: 1rem;
+            display: inline-block;
+        }
+
+        /* 文章卡片式段落 */
+        .intro-card {
+            background: #fffcf7;
+            padding: 2rem 2.2rem;
+            border-radius: 32px;
+            margin-bottom: 2rem;
+            box-shadow: 0 6px 14px rgba(100, 60, 30, 0.06);
+            border: 1px solid rgba(230, 195, 165, 0.25);
+            transition: box-shadow 0.15s;
+        }
+
+        .intro-card:hover {
+            box-shadow: 0 8px 20px rgba(120, 70, 35, 0.08);
+        }
+
+        .intro-card h2 {
+            font-size: 1.6rem;
+            font-weight: 450;
+            letter-spacing: -0.01em;
+            color: #4d301f;
+            border-left: 6px solid #b35a2c;
+            padding-left: 1rem;
+            margin-bottom: 1.4rem;
+            line-height: 1.3;
+        }
+
+        .intro-card p {
+            margin-bottom: 1rem;
+            color: #3f2e23;
+        }
+
+        .intro-card p:last-child {
+            margin-bottom: 0;
+        }
+
+        .inset-link {
+            background: #e7cfb8;
+            border-radius: 48px;
+            padding: 0.1rem 0.6rem;
+            white-space: nowrap;
+            color: #3f2819;
+            transition: background 0.15s;
+            font-weight: 450;
+            text-decoration: none;
+            border-bottom: 1px solid #b47b58;
+        }
+
+        .inset-link:hover {
+            background: #dab793;
+            border-bottom-color: #8a5e3b;
+        }
+
+        .faq-mini {
+            background: #f3e4d5;
+            border-radius: 22px;
+            padding: 1.6rem 2rem 1.4rem;
+            margin: 2rem 0 1.8rem;
+            border-left: 4px solid #b96a3c;
+        }
+
+        .faq-mini h3 {
+            font-size: 1.2rem;
+            font-weight: 500;
+            color: #3f281a;
+            margin-bottom: 0.6rem;
+        }
+
+        .faq-mini p {
+            font-size: 0.98rem;
+            color: #3d2d22;
+        }
+
+        .faq-mini .highlight {
+            background: #e9d2be;
+            border-radius: 40px;
+            padding: 0.2rem 0.8rem;
+            font-weight: 500;
+        }
+
+        .footer-note {
+            margin-top: 2.5rem;
+            padding-top: 1.6rem;
+            border-top: 1px solid #ddc6b2;
+            display: flex;
+            flex-wrap: wrap;
+            align-items: baseline;
+            justify-content: space-between;
+            gap: 0.8rem;
+            font-size: 0.95rem;
+            color: #4d392b;
+        }
+
+        .footer-note a {
+            text-decoration: none;
+            color: #3e2a1b;
+            background: #ecceb5;
+            padding: 0.4rem 1.2rem;
+            border-radius: 60px;
+            font-weight: 500;
+            font-size: 1rem;
+            transition: background 0.15s, transform 0.1s;
+            display: inline-block;
+            border: 1px solid #cdad91;
+            box-shadow: 0 2px 6px rgba(100, 60, 30, 0.08);
+        }
+
+        .footer-note a:hover {
+            background: #deb692;
+            transform: scale(1.02);
+            border-color: #b5825e;
+        }
+
+        .footer-note .muted {
+            opacity: 0.7;
+        }
+
+        @media (max-width: 600px) {
+            body {
+                padding: 1rem 0.8rem;
+            }
+
+            .magazine-wrapper {
+                padding: 1.6rem 1.2rem 2.4rem;
+                border-radius: 32px;
+            }
+
+            .hero-section {
+                margin: -1.6rem -1.2rem 2rem;
+                padding: 2rem 1.5rem 1.8rem;
+                border-radius: 32px 32px 60px 60px;
+            }
+
+            .hero-title {
+                font-size: 2.1rem;
+            }
+
+            .hero-sub {
+                font-size: 1rem;
+            }
+
+            .intro-card {
+                padding: 1.4rem 1.2rem;
+                border-radius: 24px;
+            }
+
+            .intro-card h2 {
+                font-size: 1.35rem;
+                padding-left: 0.8rem;
+            }
+
+            .faq-mini {
+                padding: 1.2rem 1.2rem;
+            }
+
+            .footer-note {
+                flex-direction: column;
+                align-items: center;
+                text-align: center;
+            }
+        }
+
+        @media (max-width: 420px) {
+            .hero-title {
+                font-size: 1.8rem;
+            }
+            .magazine-wrapper {
+                padding: 1.2rem 0.9rem 2rem;
+            }
+        }
+    </style>
+</head>
+<body>
+<div class="magazine-wrapper">
+
+    <!-- hero banner -->
+    <div class="hero-section">
+        <div class="hero-eyebrow">⚽ 专题 · 赛事时间线</div>
+        <h1 class="hero-title">赛程·底蕴·节奏</h1>
+        <div class="hero-sub">从揭幕到决赛，每一场都有它的位置</div>
+    </div>
+
+    <!-- 第一段：背景说明 -->
+    <div class="intro-card">
+        <h2>为什么赛程值得细看</h2>
+        <p>世界杯赛程不仅仅是日期和场次的排列，它本质上是一张精密编织的叙事地图。小组赛阶段往往决定了淘汰赛的气质走向，而每个比赛日的开球时间、场地海拔、休息间隔，都会对球队的轮换和战术产生真实影响。了解<a href="https://main-wcschedule.com" class="inset-link">世界杯赛程</a>的整体结构，可以帮助球迷更准确地判断哪些比赛可能出现冷门，哪些强队会提前轮换主力。</p>
+        <p>近几届赛事增加了更多横跨时区的安排，小组赛最后一轮同组两场比赛同时开球已是固定规则。因此，赛程本身就是一个动态的决策参考，而不仅仅是看球的日历。</p>
+    </div>
+
+    <!-- 第二段：自然介绍 + 特点 -->
+    <div class="intro-card">
+        <h2>分组逻辑与节奏分层</h2>
+        <p>国际足联在编排赛程时会优先考虑同组球队的休息均衡性，同时尽量让同一城市的球场承担不同小组的比赛，以减少场地适应偏差。例如，一支球队如果连续在高温下午场比赛，那么它下一轮的恢复时间就会比晚间比赛的对手更紧张——这些细节都藏在<a href="https://main-wcschedule.com" class="inset-link">世界杯赛程</a>的日期与开球时间背后。</p>
+        <p>另一个容易被忽略的层面是「比赛日密度」：某些小组可能在前六天踢完两轮，而另一些小组则被拉长到八天。虽然国际足联会尽量平衡，但细微的差异仍会影响球队的体能分配。对于关注深度分析的球迷来说，赛程表是一份需要横向对比的资料。</p>
+    </div>
+
+    <!-- 第三段：场景与真实用途 -->
+    <div class="intro-card">
+        <h2>你其实可以这样用赛程</h2>
+        <p>不只是查阅下一场什么时候踢——你可以把赛程当作「淘汰赛路径预测」的工具：根据小组出线后的对位落位，提前标注可能出现的强强对话。很多资深球迷会在抽签后就把潜在的对位时间标在日历上，而这正是基于对<a href="https://main-wcschedule.com" class="inset-link">世界杯赛程</a>整体结构的理解。</p>
+        <p>另外，如果你计划在赛事期间跨城观赛（比如从慕尼黑到法兰克福赶两场小组赛），赛程的间隔时间和场地距离就变得非常关键。提前把比赛日、城市、开球时间对齐，比单纯记住日期有用得多。</p>
+    </div>
+
+    <!-- FAQ摘要风格提示 -->
+    <div class="faq-mini">
+        <h3>❓ 常见关注点</h3>
+        <p><span class="highlight">Q：小组第三轮同时开球有哪些场次？</span> A：每组的最后一轮，同组两场比赛均安排在同一时间开球，具体时间以赛程页面标注为准。</p>
+        <p style="margin-top: 0.5rem;"><span class="highlight">Q：淘汰赛阶段加时赛怎样影响赛程？</span> A：加时赛不改变下一轮开球时间，但会缩短该队的恢复期（通常少一天），这一点可以在赛程纵览中比较各队间隔。</p>
+        <p style="margin-top: 0.5rem;"><span class="highlight">Q：赛程信息会临时变动吗？</span> A：极少数情况下，因天气或安全原因会调整开球时间，但一般会提前24小时确认。建议以最新赛程页面公布的时间为准。</p>
+    </div>
+
+    <!-- 页尾访问提示 -->
+    <div class="footer-note">
+        <span class="muted">📅 所有时间均为当地时间 · 完整赛程持续更新</span>
+        <span>
+            <a href="https://main-wcschedule.com">世界杯赛程</a>
+        </span>
+    </div>
+
+    <!-- 隐形种子（仅为风格变化需要，不显示） -->
+    <span style="display:none;">7addb1e5d934b09c</span>
+
+</div>
+</body>
+</html>
