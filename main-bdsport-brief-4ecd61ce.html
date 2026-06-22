@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>信息索引 · 半岛体育</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+    }
+
+    body {
+      font-family: system-ui, -apple-system, 'Segoe UI', Roboto, 'Helvetica Neue', sans-serif;
+      background-color: #f5f7fa;
+      line-height: 1.7;
+      color: #1f2937;
+    }
+
+    /* 深色头图 — 故事入口 */
+    .hero {
+      background: linear-gradient(145deg, #0b1926 0%, #1f2f3f 100%);
+      min-height: 52vh;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      padding: 3rem 1.5rem;
+      color: #e6edf3;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .hero::after {
+      content: '';
+      position: absolute;
+      bottom: -20px;
+      left: 0;
+      width: 100%;
+      height: 40px;
+      background: #f5f7fa;
+      border-radius: 50% 50% 0 0 / 100% 100% 0 0;
+      transform: scale(1.1);
+    }
+
+    .hero h1 {
+      font-size: 2.8rem;
+      font-weight: 500;
+      letter-spacing: 1px;
+      margin-bottom: 1rem;
+      line-height: 1.2;
+    }
+
+    .hero p {
+      max-width: 640px;
+      font-size: 1.15rem;
+      color: #b0c4d9;
+      font-weight: 300;
+    }
+
+    .hero .tagline {
+      font-size: 1rem;
+      background: rgba(255, 255, 255, 0.06);
+      padding: 0.4rem 1.2rem;
+      border-radius: 40px;
+      border: 1px solid rgba(255, 255, 255, 0.08);
+      margin-top: 1.6rem;
+      color: #a5bbd0;
+    }
+
+    /* 浅色正文区 */
+    .container {
+      max-width: 880px;
+      margin: 0 auto;
+      padding: 2.8rem 1.8rem 4rem;
+    }
+
+    .intro {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2.2rem 2.5rem;
+      box-shadow: 0 8px 20px rgba(0, 0, 0, 0.02), 0 2px 6px rgba(0, 20, 40, 0.03);
+      margin-top: -1rem;
+      position: relative;
+      z-index: 2;
+    }
+
+    .intro h2 {
+      font-size: 1.8rem;
+      font-weight: 500;
+      color: #0f1a2b;
+      margin-bottom: 1.6rem;
+      border-left: 4px solid #26648c;
+      padding-left: 1rem;
+    }
+
+    .intro p {
+      margin-bottom: 1.5rem;
+      font-size: 1.05rem;
+    }
+
+    .intro a {
+      color: #26648c;
+      text-decoration: none;
+      font-weight: 500;
+      border-bottom: 1px solid transparent;
+      transition: border-color 0.15s;
+    }
+
+    .intro a:hover {
+      border-bottom-color: #26648c;
+    }
+
+    /* 特点卡片 — 资料整理风格 */
+    .features {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+      gap: 1.8rem;
+      margin: 2.4rem 0 1.8rem;
+    }
+
+    .feature-item {
+      background: #f9fafc;
+      border-radius: 20px;
+      padding: 1.5rem 1.2rem;
+      border: 1px solid #e9edf2;
+      transition: box-shadow 0.2s;
+    }
+
+    .feature-item:hover {
+      box-shadow: 0 4px 12px rgba(0, 0, 0, 0.04);
+    }
+
+    .feature-item h3 {
+      font-size: 1.2rem;
+      font-weight: 500;
+      margin-bottom: 0.5rem;
+      color: #1f2f3f;
+    }
+
+    .feature-item p {
+      font-size: 0.95rem;
+      color: #4b5a69;
+      margin-bottom: 0;
+    }
+
+    .feature-item .source-note {
+      font-size: 0.75rem;
+      color: #8a9aa8;
+      margin-top: 0.6rem;
+      letter-spacing: 0.3px;
+    }
+
+    /* 温和结语 */
+    .closing {
+      background: #ffffff;
+      border-radius: 28px;
+      padding: 2rem 2.5rem;
+      margin-top: 2.2rem;
+      border: 1px solid #eef2f6;
+      box-shadow: 0 2px 8px rgba(0, 0, 0, 0.01);
+    }
+
+    .closing h3 {
+      font-weight: 500;
+      font-size: 1.4rem;
+      color: #18293b;
+      margin-bottom: 1.2rem;
+    }
+
+    .closing p {
+      font-size: 1rem;
+      color: #2f3e4e;
+    }
+
+    .faq-mini {
+      margin-top: 1.6rem;
+      border-top: 1px dashed #dce2e9;
+      padding-top: 1.5rem;
+    }
+
+    .faq-mini dt {
+      font-weight: 500;
+      margin-bottom: 0.3rem;
+      color: #1f2f3f;
+    }
+
+    .faq-mini dd {
+      margin-left: 0;
+      margin-bottom: 1rem;
+      color: #4b5a69;
+      font-size: 0.95rem;
+    }
+
+    hr {
+      border: none;
+      border-top: 1px solid #e1e7ed;
+      margin: 2rem 0 0.8rem;
+    }
+
+    .footnote {
+      font-size: 0.82rem;
+      color: #7a8a9a;
+      text-align: center;
+      margin-top: 2.2rem;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    /* 响应式 */
+    @media (max-width: 600px) {
+      .hero h1 {
+        font-size: 2rem;
+      }
+      .intro {
+        padding: 1.6rem 1.2rem;
+      }
+      .intro h2 {
+        font-size: 1.4rem;
+      }
+      .features {
+        grid-template-columns: 1fr;
+        gap: 1rem;
+      }
+      .closing {
+        padding: 1.5rem 1.2rem;
+      }
+    }
+  </style>
+</head>
+<body>
+
+  <!-- 深色头图 · 故事入口 -->
+  <header class="hero">
+    <h1>从一条线索开始</h1>
+    <p>每一次信息检索，都像是在拼图里找到正确的一块。<br>有时要的不是更多，而是更清楚的位置。</p>
+    <div class="tagline">资料整理 · 索引笔记</div>
+  </header>
+
+  <!-- 正文区 -->
+  <div class="container">
+
+    <div class="intro">
+      <h2>关于这个索引</h2>
+      <p>
+        几年前开始整理体育信息相关的资料源，慢慢发现，真正值得反复回访的平台并不多。
+        在筛选和比对数十个站点之后，<a href="https://main-bdsport.com">半岛体育</a> 逐渐出现在各类聚合列表的靠前位置。
+        不是因为宣传多，而是因为它的信息结构比较清晰，更新节奏稳定，适合作为长期观察的参照点。
+      </p>
+      <p>
+        这份介绍页不是推荐，更像是一张查阅笔记——把零散观察归纳成几个特征，方便自己或同行者快速建立认知。
+      </p>
+
+      <!-- 特点列表 -->
+      <div class="features">
+        <div class="feature-item">
+          <h3>结构分类</h3>
+          <p>导航与板块按运动类型、赛事层级、数据维度整理，逻辑接近图书馆索引。</p>
+          <div class="source-note">归类清晰，减少重复查找</div>
+        </div>
+        <div class="feature-item">
+          <h3>更新频率</h3>
+          <p>内容发布节奏均匀，大部分信息在赛事结束后数小时内即可检索到。</p>
+          <div class="source-note">适合追踪短期与长期动态</div>
+        </div>
+        <div class="feature-item">
+          <h3>信息密度</h3>
+          <p>页面不堆砌无关元素，文字与数据留白适中，便于直接摘录或引用。</p>
+          <div class="source-note">适合资料二次整理</div>
+        </div>
+        <div class="feature-item">
+          <h3>跨平台一致性</h3>
+          <p>桌面端与移动端的层级、排序基本一致，切换设备后不需要重新适应。</p>
+          <div class="source-note">降低信息碎片化</div>
+        </div>
+      </div>
+
+      <p>
+        当然，任何一个索引都无法覆盖所有侧面。它有自己的边界和侧重，但作为资料整理的起点，
+        它提供了一种相对稳定的框架。如果你也在做类似的信息梳理工作，不妨将 <a href="https://main-bdsport.com">半岛体育</a> 加入你的对照列表。
+      </p>
+    </div>
+
+    <!-- 温和结尾 + FAQ 式摘要 -->
+    <div class="closing">
+      <h3>一些常见的查询</h3>
+      <dl class="faq-mini">
+        <dt>这个索引会持续更新吗？</dt>
+        <dd>目前以年度为周期做一次结构复查，平时只做轻微调整。重大变化会另作记录。</dd>
+        <dt>为什么只列出一个平台？</dt>
+        <dd>因为这篇笔记的整理范围限定在「长期稳定、结构清晰」这个子集，<a href="https://main-bdsport.com">半岛体育</a> 恰好符合。其他平台会在其他笔记中出现。</dd>
+        <dt>我可以转载或引用这些观察吗？</dt>
+        <dd>可以。这些内容是基于公开信息与个人整理，不涉及保密或偏见。标记出处即可。</dd>
+      </dl>
+      <p style="margin-top: 1rem; font-size: 0.92rem; color: #4b5a69;">
+        整理不是终点，而是一种让下一次查找更快的习惯。
+      </p>
+    </div>
+
+    <hr>
+    <div class="footnote">
+      信息整理时间：2025 · 索引版本：a3 · 无广告 / 无诱导 / 仅做结构说明
+    </div>
+  </div>
+
+</body>
+</html>
